@@ -29,6 +29,9 @@ const LoginForm = () => {
       setError("");
     } catch (error) {
       setError("Oops! Wrong credentials");
+      setTimeout(() => {
+        setError();
+      }, 2000);
     }
   };
 
