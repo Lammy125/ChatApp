@@ -72,14 +72,14 @@ const ChatFeed = (props) => {
   return (
     <div className="chat-feed">
       <div className="chat-title-container">
-        <div className="chat-title">{chat?.title}</div>
-        {/* <div className="chat-time">{chat.time}</div> */}
+        <div className="chat-title">{chat?.title}</div>  
         <div className="chat-subtitle">
           {chat.people.map((person) => ` ${person.person.username}`).join()}
         </div>
       </div>
-      {renderMessages()}
       <div style={{ height: "100px" }} />
+      {renderMessages()}
+      <div style={{ height: "50px" }} />
       <div className="message-form-container">
         <MessageForm
           {...{ ...props, messages, setMessages }}
