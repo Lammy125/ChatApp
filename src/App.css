@@ -301,4 +301,28 @@
   color: white;
   text-align: center;
   margin-top: 20px;
+  margin-left: 20px;
+  background-color: rgb(225, 71, 71);
+  width: 360px;
+  border-radius: 3px;
+}
+
+.error1 {
+  color: white;
+  text-align: center;
+  margin-top: 20px;
+  margin-left: 20px;
+  background-color: rgb(225, 71, 71);
+  width: 360px;
+  border-radius: 3px;
+}
+
+.success {
+  color: white;
+  text-align: center;
+  background-color: rgb(105, 234, 105);
+  border-radius: 3px;
+  width: 360px;
+  margin-left: 20px;
+  margin-bottom: 20px;
 }
