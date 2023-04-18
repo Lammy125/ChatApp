@@ -7,10 +7,6 @@ import Chat from "./pages/chat/Chat";
 import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
-  // if (!localStorage.getItem("username")) {
-  //   return <LoginForm />;
-  // }
-
   return (
     <>
       <Routes>

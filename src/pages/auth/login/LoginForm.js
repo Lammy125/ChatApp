@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useState } from "react";
-import RegisterForm from "../register/RegisterForm";
 import { useNavigate } from "react-router-dom";
 import { useRedirectWithAuthenticated } from "../../../hooks/redirect.hook";
 
@@ -10,7 +9,6 @@ const LoginForm = () => {
   useRedirectWithAuthenticated();
   const navigate = useNavigate();
 
-  const [showRegistrationForm, setShowRegistrationForm] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -33,10 +31,10 @@ const LoginForm = () => {
       localStorage.setItem("username", username);
       localStorage.setItem("password", password);
 
-      navigate("/");
       setSuccess("Successfully logged in!");
       setTimeout(() => {
         setSuccess("");
+        navigate("/");
       }, 2000);
       setError("");
     } catch (error) {
@@ -55,8 +53,9 @@ const LoginForm = () => {
   return (
     <div className="wrapper">
       <div className="form">
-        <h2 className="success">{success}</h2>
         <h1 className="title">ChatApp</h1>
+        <h2 className="success">{success}</h2>
+        <h2 className="error">{error}</h2>
         <form onSubmit={handleSubmit}>
           <input
             type="text"
@@ -79,13 +78,11 @@ const LoginForm = () => {
               Login
             </button>
           </div>
-          <h2 className="error">{error}</h2>
-
-          <div>
+          <div align="center">
             <button
               type="button"
               className="button"
-              style={{ marginLeft: "20px" }}
+              style={{ marginTop: "20px" }}
               onClick={handleRegisterClick}
             >
               Register

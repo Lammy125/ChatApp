@@ -15,17 +15,13 @@ const MessageForm = (props) => {
 
     if (text.length > 0) {
       sendMessage(creds, chatId, { text }, (message) => {
-        console.log("a messages");
-        console.log(message);
         const sentMessage = {
           [message.created]: message,
         };
-        console.log(sentMessage);
 
         setMessages((messages) => ({ ...messages, ...sentMessage }));
       });
     }
-
     setValue("");
   };
 

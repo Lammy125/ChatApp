@@ -300,17 +300,7 @@
 .error {
   color: white;
   text-align: center;
-  margin-top: 20px;
-  margin-left: 20px;
-  background-color: rgb(225, 71, 71);
-  width: 360px;
-  border-radius: 3px;
-}
-
-.error1 {
-  color: white;
-  text-align: center;
-  margin-top: 20px;
+  margin-bottom: 20px;
   margin-left: 20px;
   background-color: rgb(225, 71, 71);
   width: 360px;

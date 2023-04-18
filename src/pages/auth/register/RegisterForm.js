@@ -1,15 +1,16 @@
 import axios from "axios";
 import React, { useState } from "react";
-
-// const projectID = "03f241be-6781-455c-8997-45555854442c";
+import { useNavigate } from "react-router-dom";
+import { PRIVATE_KEY } from "../../../constants/constants";
 
 const RegisterForm = () => {
+  const navigate = useNavigate();
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [avatar, setAvatar] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
@@ -17,41 +18,52 @@ const RegisterForm = () => {
     e.preventDefault();
 
     const data = {
-      // "Project-ID": projectID,
       first_name: firstName,
       last_name: lastName,
       email,
-      "User-Name": username,
-      "User-Secret": password,
+      username,
+      secret: password,
     };
 
     try {
       const response = await axios.post(
-        "https://api.chatengine.io/chats",
+        "https://api.chatengine.io/users/",
         data,
         {
           headers: {
-            "PRIVATE-KEY": "{{ee3753c7-c0ec-4df7-89d2-71e26af3dd8e}}",
+            "PRIVATE-KEY": `{{${PRIVATE_KEY}}}`, // your own private key
           },
         }
       );
 
+      localStorage.setItem("username", username);
+      localStorage.setItem("password", password);
+
       console.log(response.data);
       setSuccess("User registered successfully!");
+
+      setError("");
+      setTimeout(() => {
+        setSuccess("");
+        navigate("/");
+      }, 2000);
       setError("");
     } catch (error) {
       console.log(error);
       setSuccess("");
       setError("Failed to register user. Please try again.");
+      setTimeout(() => {
+        setError("");
+      }, 2000);
     }
   };
 
   return (
     <div className="wrapper">
-      <h2 className="error1">{error}</h2>
-      <h2 className="success">{success}</h2>
       <div className="form">
         <h1 className="title">ChatApp</h1>
+        <h2 className="success">{success}</h2>
+        <h2 className="error">{error}</h2>
         <form onSubmit={handleSubmit}>
           <input
             type="text"
@@ -92,19 +104,11 @@ const RegisterForm = () => {
             className="input"
             required
           />
-          <input
-            type="file"
-            value={avatar}
-            onChange={(e) => setAvatar(e.target.value)}
-            placeholder="********"
-            className="input"
-          />
           <div align="center">
             <button type="submit" className="button">
-              Login
+              Register
             </button>
           </div>
-          <h2 className="error">{error}</h2>
         </form>
       </div>
     </div>
