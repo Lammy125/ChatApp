@@ -7,5 +7,5 @@ export const useRedirectWithAuthenticated = () => {
 
   useEffect(() => {
     if (authenticated) navigate("/");
-  }, [authenticated, navigate]);
+  }, []);
 };
