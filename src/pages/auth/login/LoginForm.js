@@ -2,8 +2,8 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRedirectWithAuthenticated } from "../../../hooks/redirect.hook";
+import { PROJECT_ID } from "../../../constants/constants";
 
-const projectID = "03f241be-6781-455c-8997-45555854442c";
 
 const LoginForm = () => {
   useRedirectWithAuthenticated();
@@ -18,7 +18,7 @@ const LoginForm = () => {
     e.preventDefault();
 
     const authObject = {
-      "Project-ID": projectID,
+      "Project-ID": PROJECT_ID,
       "User-Name": username,
       "User-Secret": password,
     };
